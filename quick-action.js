@@ -9,7 +9,7 @@
  *
  * 2. System Settings -> Keyboard -> Keyboard Shortcuts -> Services -> Text
  *    2.1. Find "EngHebTransfom" at the bottom
- *    2.2  Double click "EngHebTransfom" and choose keyboard shortcut
+ *    2.2. Double click "EngHebTransfom" and choose keyboard shortcut
  * 
  * 3. Optionaly, change `engToHeb` below if your keyboard mapping is different.
  */

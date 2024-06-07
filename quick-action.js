@@ -10,32 +10,25 @@
  * 2. System Settings -> Keyboard -> Keyboard Shortcuts -> Services -> Text
  *    2.1. Find "EngHebTransfom" at the bottom
  *    2.2  Double click "EngHebTransfom" and choose keyboard shortcut
+ * 
+ * 3. Optionaly, change `engToHeb` below if your keyboard mapping is different.
  */
 
 
-function run(input) {
-  const originalText = input.join("");
-  const transformedText = transform(originalText);
+const engToHeb = {
+  "(": ")", ")": "(",
+  "q": "/", "w": "'", "e": "ק", "r": "ר", "t": "א", "y": "ט", "u": "ו", "i": "ן", "o": "ם", "p": "פ", "[": "]", "]": "[",
+  "a": "ש", "s": "ד", "d": "ג", "f": "כ", "g": "ע", "h": "י", "j": "ח", "k": "ל", "l": "ך", ";": "ף", "\\": "ֿ", "'": ",",
+  "`": ";", "z": "ז", "x": "ס", "c": "ב", "v": "ה", "b": "נ", "n": "מ", "m": "צ", ",": "ת", ".": "ץ", "<": ">", ">": "<", "/": ".",
+};
 
-  /*
-   * If "Output replaces selected text" is unavailable,
-   * We can use the clipboard to write our text.
-   */
-
-  // const app = Application.currentApplication();
-  // app.includeStandardAdditions = true;
-  // app.setTheClipboardTo(transformedText);
-  // const systemEvents = Application("System Events");
-  // systemEvents.keystroke("v", { using: ["command down"] });
-
-  return transformedText;
-}
+const hebToEng = Object.fromEntries(Object.entries(engToHeb).map(([key, value]) => [value, key]));
 
 
-function transform(originalText) {
+function transform(text) {
   let engVotes = 0, hebVotes = 0;
 
-  for (const letter of originalText) {
+  for (const letter of text) {
     if (letter in engToHeb) {
       engVotes++;
     }
@@ -46,45 +39,10 @@ function transform(originalText) {
 
   const mapping = engVotes > hebVotes ? engToHeb : hebToEng;
 
-  return [...originalText].map((ch) => ch in mapping ? mapping[ch] : ch).join("");
+  return [...text].map((ch) => ch in mapping ? mapping[ch] : ch).join("");
 }
 
-
-const engToHeb = {
-  "`": ";",
-  "=": "[",
-  "q": "/",
-  "w": "'",
-  "e": "ק",
-  "r": "ר",
-  "t": "א",
-  "y": "ט",
-  "u": "ו",
-  "i": "ן",
-  "o": "ם",
-  "p": "פ",
-  "\\": "ֿ",
-  "a": "ש",
-  "s": "ד",
-  "d": "ג",
-  "f": "כ",
-  "g": "ע",
-  "h": "י",
-  "j": "ח",
-  "k": "ל",
-  "l": "ך",
-  ";": "ף",
-  "'": ",",
-  "z": "ז",
-  "x": "ס",
-  "c": "ב",
-  "v": "ה",
-  "b": "נ",
-  "n": "מ",
-  "m": "צ",
-  ",": "ת",
-  ".": "ץ",
-  "/": "."
-};
-
-const hebToEng = Object.fromEntries(Object.entries(engToHeb).map(([k, v]) => [v, k]));
+function run(input) {
+  const text = input.join("");
+  return transform(text);
+}

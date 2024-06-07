@@ -1,17 +1,6 @@
-/*
- *   How to Apply Shortcut
- *  -----------------------
- *
- * 1. Automator -> Create "Quick Action" -> Paste JS
- *    1.1. In "Workflow receives current" choose "text"
- *    1.2. Check the "Output replaces selected text" checkbox
- *    1.3. Save via Cmd+S and name it (e.g. "EngHebTransfom")
- *
- * 2. System Settings -> Keyboard -> Keyboard Shortcuts -> Services -> Text
- *    2.1. Find "EngHebTransfom" at the bottom
- *    2.2. Double click "EngHebTransfom" and choose keyboard shortcut
- * 
- * 3. Optionaly, change `engToHeb` below if your keyboard mapping is different.
+/**
+ * This JS is intended to be used as a macOS's "Quick Action".
+ * Please see README.md.
  */
 
 

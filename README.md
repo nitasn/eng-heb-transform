@@ -7,16 +7,21 @@ A macOS shortcut to transform text you meant to type in Hebrew but mistakenly ty
 ## How to Apply Shortcut
 
 ### Step 1: In macOS's Automator
-* Create "Quick Action"
+* `New Document` -> `Quick Action`.
+* Drag an instance of a `Run JavaScript`.
 * Paste the content of the attached `quick-action.js`.
 * In *"Workflow receives current"* choose **text**.
 * Check the *"Output replaces selected text"* checkbox
-* Save via `Cmd+S` and name it, e.g. "eng-heb-transform".
+* Save via `Cmd + S` and name it, e.g. "eng-heb-transform".
 
 ### Step 2: In macOS's System Settings
 * `Keyboard` -> `Keyboard Shortcuts` -> `Services`-> `Text`.
 * Find your "eng-heb-transform" at the bottom.
-* Double click it and choose keyboard shortcut, e.g. `Cmd+Shift+6`.
+* Double click it and **choose a keyboard shortcut that has Cmd + Shift**, e.g. `Cmd + Shift + 7`.
+
+### Step 3: In macOS's System Settings
+* `Privacy & Security` -> `Accessability`.
+* Add the apps you'd like to use this shortcut in (e.g. Chrome, Outlook).
 
 <br/>
 
